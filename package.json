@@ -1,0 +1,21 @@
+{
+  "name": "tugasstatistika",
+  "version": "1.0.0",
+  "description": "## What is CodeIgniter?",
+  "main": "postcss.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.3",
+    "autoprefixer": "^10.3.4",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "css": "npx tailwindcss -i ./src/index.css -o ./public/assets/css/tailwind.css"
+  },
+  "author": "",
+  "license": "ISC"
+}
