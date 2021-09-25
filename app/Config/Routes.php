@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Beranda::index');
 $routes->get('/about', 'About::index');
 $routes->get('/statistika', 'Statistika::index');
+$routes->add('/statistika/detailData/(:num)', 'Statistika::detailData/$1');
 
 /*
  * --------------------------------------------------------------------

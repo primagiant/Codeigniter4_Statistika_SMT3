@@ -1,6 +1,9 @@
 <?= $this->extend('layouts/base'); ?>
 
 <?= $this->section('content'); ?>
+<div>
+
+</div>
 <div class="flex justify-between items-center mb-3">
     <div>
         <button id="openModal" class="flex items-center justify-center px-4 py-3 bg-indigo-400 hover:bg-indigo-500 text-white rounded-lg shadow-lg text-sm">
@@ -8,7 +11,7 @@
                 <img class="h-5" src="/assets/img/add.svg" alt="Search">
             </div>
             <span class="ml-2 text-sm">
-                Tambah Data
+                Tambah Skor
             </span>
         </button>
     </div>
@@ -25,42 +28,32 @@
     </div>
 </div>
 
-<?php if ($datas != null) : ?>
-    <div class="w-full overflow-x-auto grid grid-cols-2 md:grid-cols-3 gap-4">
-        <?php foreach ($datas as $data) : ?>
-            <div class="bg-indigo-100 p-5 rounded-md">
-                <div class="mb-3">
-                    <p class="text-xl"><?= $data['nama'] ?></p>
-                </div>
-                <div class="flex justify-start items-center gap-3 text-white">
-                    <a href="#" class="bg-yellow-300 hover:bg-yellow-400 flex justify-center items-center px-3 py-2 rounded-lg">
-                        <img class="h-6" src="/assets/img/edit.svg" alt="">
-                    </a>
-                    <a href="/statistika/deleteData/?id=<?= $data['id']; ?>" class="bg-red-500 hover:bg-red-600 flex justify-center items-center py-2 px-3 rounded-lg">
-                        <img class="h-6" src="/assets/img/delete.svg" alt="">
-                    </a>
-                </div>
-                <div class="mt-3">
-                    <a class="bg-indigo-500 px-4 py-2 text-white rounded-lg" href="/statistika/detailData/<?= $data['id']; ?>">Lihat Detail</a>
-                </div>
-            </div>
-        <?php endforeach ?>
-    </div>
-<?php else : ?>
-    <div>
-        <p class="text-xl font-light text-center bg-indigo-100 py-3">No Data Founded</p>
-    </div>
-<?php endif ?>
-
+<div class="w-full overflow-x-auto">
+    <table class="table-auto shadow-lg bg-white w-full">
+        <thead>
+            <tr>
+                <th class="bg-blue-100 border text-center px-6 py-2 w-10">No</th>
+                <th class="bg-blue-100 border text-center px-6 py-2">Nilai</th>
+                <th class="bg-blue-100 border text-center px-6 py-2">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $no = 1 ?>
+            <?php foreach ($skor as $s) : ?>
+                <tr>
+                    <td class="border text-center px-6 py-2"><?= $no++; ?></td>
+                    <td class="border text-center px-6 py-2"><?= $s['nilai']; ?></td>
+                    <td class="border text-center px-6 py-2">test</td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
 
 <!-- Modals -->
 <div id="modal" class="hidden fixed z-10  top-0 bottom-0 right-0 left-0 justify-center items-center bg-white bg-opacity-60">
-    <form method="POST" action="/statistika/tambahData" class="bg-indigo-100 bg-opacity-90 -mt-48 p-8 rounded-md relative w-96">
+    <form method="POST" action="/statistika/tambahNilai/?id=<?= $skor[0]['datas_id']; ?>" class="bg-indigo-100 bg-opacity-90 -mt-48 p-8 rounded-md relative w-96">
         <button type="button" id="closeModal" class="absolute top-2 right-2 px-2 py-1 bg-red-500 hover:bg-red-400 text-white font-black text-sm">X</button>
-        <label class="text-sm font-semibold font-quicksand" for="namaData">Nama Data</label>
-        <div class="mb-3">
-            <input class="border border-indigo-400 outline-none focus:border-none focus:ring-indigo-500 focus:border-indigo-500 rounded-lg w-full" type="text" name="namaData" id="namaData">
-        </div>
         <label class="text-sm font-semibold font-quicksand" for="nilai">Input Skor</label>
         <div class="mb-3">
             <input class="border border-indigo-400 outline-none focus:border-none focus:ring-indigo-500 focus:border-indigo-500 rounded-lg w-full" type="text" name="nilai" id="nilai">
@@ -80,7 +73,6 @@
     </form>
 </div>
 <!-- End Modals -->
-
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>
