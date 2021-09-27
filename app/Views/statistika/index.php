@@ -12,7 +12,7 @@
             </span>
         </button>
     </div>
-    <div class="flex">
+    <!-- <div class="flex">
         <input class="border border-indigo-400 outline-none focus:border-none focus:ring-indigo-500 focus:border-indigo-500 rounded-l-lg" type="text" name="" id="">
         <button class="flex items-center justify-center px-3 py-1 bg-indigo-400 hover:bg-indigo-500 text-white rounded-r-lg rounded-l-none">
             <div>
@@ -22,7 +22,7 @@
                 Search
             </span>
         </button>
-    </div>
+    </div> -->
 </div>
 
 <?php if ($datas != null) : ?>

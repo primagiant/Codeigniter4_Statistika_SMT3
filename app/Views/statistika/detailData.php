@@ -56,7 +56,7 @@
 </div>
 
 <!-- Detail Data -->
-<div class="w-full md:w-8/12 overflow-x-auto">
+<div class="w-full md:w-8/12 overflow-x-auto mb-12">
     <h3 class="text-xl font-quicksand font-semibold mb-2 p-2">Detail Nilai Dalam Tabel</h3>
     <table class="table-auto bg-white w-full">
         <thead>

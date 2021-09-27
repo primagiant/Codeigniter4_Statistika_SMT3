@@ -25,6 +25,9 @@ class Statistika extends BaseController
     public function detailData($id)
     {
         $Skor = new \App\Models\Skor();
+
+        $data = [];
+
         $hasil = $Skor->getDataById($id);
         $frekuensiTable = $Skor->getFrekuensiTable($hasil);
 
@@ -36,11 +39,13 @@ class Statistika extends BaseController
                     "Detail Data",
                     $hasil[0]['nama'],
                 ],
-                "skor" => $hasil,
                 "min" => $Skor->getMinimum($hasil),
                 "max" => $Skor->getMaksimum($hasil),
                 "rataRata" => $Skor->getRataRata($hasil),
                 "frekuensiTable" => $frekuensiTable,
+                "skor" => $hasil,
+                // 'skor' => $Skor->paginate(),
+                // 'pager' => $Skor->pager,
             ];
             return view('statistika/detailData', $data);
         } else {
