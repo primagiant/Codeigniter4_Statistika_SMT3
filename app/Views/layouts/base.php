@@ -32,6 +32,13 @@
         </div>
         <?= $this->renderSection("content"); ?>
     </div>
+
+    <!-- Footer -->
+    <section class="bg-indigo-400 w-full h-16 md:pl-44 text-white font-semibold flex items-center justify-between px-12 font-quicksand">
+        <p class="text-xs md:text-sm">Copyright 2021</p>
+        <a class="text-xs md:text-sm" href="https://www.instagram.com/p_martad/?hl=en" target="_blank">Created by PrimaGiant</a>
+    </section>
+    <!-- End Footer -->
 </body>
 <!-- Script -->
 <?= $this->renderSection('script'); ?>
