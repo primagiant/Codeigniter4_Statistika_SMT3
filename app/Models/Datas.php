@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use CodeIgniter\Database\MySQLi\Builder;
 use CodeIgniter\Model;
 
 class Datas extends Model
@@ -45,5 +46,18 @@ class Datas extends Model
         $builder->where('nama', $nama);
         $query = $builder->get()->getResultArray();
         return $query;
+    }
+
+    public function deleteDataById($id)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('datas');
+        $builder->delete(['id' => $id]);
+    }
+
+    public function editNamaData($oldNama, $newNama)
+    {
+        $id = $this->getIdByName($oldNama)[0]['id'];
+        $this->update($id, ['nama' => $newNama]);
     }
 }

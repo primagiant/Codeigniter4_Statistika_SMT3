@@ -5,7 +5,7 @@
     <div>
         <button id="openModal" class="flex items-center justify-center px-4 py-3 bg-indigo-400 hover:bg-indigo-500 text-white rounded-lg shadow-lg text-sm">
             <div>
-                <img class="h-5" src="/assets/img/add.svg" alt="Search">
+                <img class="h-5" src="<?= base_url('assets/img/add.svg'); ?>" alt="Search">
             </div>
             <span class="ml-2 text-sm">
                 Tambah Data
@@ -16,7 +16,7 @@
         <input class="border border-indigo-400 outline-none focus:border-none focus:ring-indigo-500 focus:border-indigo-500 rounded-l-lg" type="text" name="" id="">
         <button class="flex items-center justify-center px-3 py-1 bg-indigo-400 hover:bg-indigo-500 text-white rounded-r-lg rounded-l-none">
             <div>
-                <img class="h-5" src="/assets/img/search.svg" alt="Search">
+                <img class="h-5" src="<?= base_url('assets/img/search.svg'); ?>" alt="Search">
             </div>
             <span class="ml-2 text-xs">
                 Search
@@ -33,15 +33,15 @@
                     <p class="text-xl"><?= $data['nama'] ?></p>
                 </div>
                 <div class="flex justify-start items-center gap-3 text-white">
-                    <a href="#" class="bg-yellow-300 hover:bg-yellow-400 flex justify-center items-center px-3 py-2 rounded-lg">
-                        <img class="h-6" src="/assets/img/edit.svg" alt="">
-                    </a>
-                    <a href="/statistika/deleteData/?id=<?= $data['id']; ?>" class="bg-red-500 hover:bg-red-600 flex justify-center items-center py-2 px-3 rounded-lg">
-                        <img class="h-6" src="/assets/img/delete.svg" alt="">
+                    <button type="button" class="openEditDataModal bg-yellow-300 hover:bg-yellow-400 flex justify-center items-center px-3 py-2 rounded-lg">
+                        <img class="h-6" src="<?= base_url(); ?>/assets/img/edit.svg" alt="">
+                    </button>
+                    <a href="<?= base_url('statistika/deleteData'); ?>?id=<?= $data['id']; ?>" class="bg-red-500 hover:bg-red-600 flex justify-center items-center py-2 px-3 rounded-lg">
+                        <img class="h-6" src="<?= base_url(); ?>/assets/img/delete.svg" alt="">
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a class="bg-indigo-500 px-4 py-2 text-white rounded-lg" href="/statistika/detailData/<?= $data['id']; ?>">Lihat Detail</a>
+                    <a class="bg-indigo-500 px-4 py-2 text-white rounded-lg" href="<?= base_url('statistika/detailData'); ?>/<?= $data['id']; ?>">Lihat Detail</a>
                 </div>
             </div>
         <?php endforeach ?>
@@ -71,7 +71,7 @@
         </div>
         <button class="w-24 flex items-center justify-center py-2 bg-indigo-400 hover:bg-indigo-500 text-white rounded-lg" name="submit" type="submit">
             <div>
-                <img class="h-5" src="/assets/img/add.svg" alt="Tambah Data">
+                <img class="h-5" src="<?= base_url(); ?>/assets/img/add.svg" alt="Tambah Data">
             </div>
             <span class="ml-2 text-xs">
                 Tambah
@@ -81,22 +81,29 @@
 </div>
 <!-- End Modals -->
 
+<!-- Modals Edit -->
+<div id="editDataModal" class="hidden fixed z-10  top-0 bottom-0 right-0 left-0 justify-center items-center bg-white bg-opacity-60">
+    <form method="POST" action="<?= base_url('statistika/editData'); ?>" class="bg-indigo-100 bg-opacity-90 -mt-48 p-8 rounded-md relative w-96">
+        <button type="button" id="closeEditDataModal" class="absolute top-2 right-2 px-2 py-1 bg-red-500 hover:bg-red-400 text-white font-black text-sm">X</button>
+        <label class="text-sm font-semibold font-quicksand" for="nilai">Edit Nama Data</label>
+        <div class="mb-3">
+            <input type="hidden" id="oldNama" name="oldNama">
+            <input id="editDataInput" class="border border-indigo-400 outline-none focus:border-none focus:ring-indigo-500 focus:border-indigo-500 rounded-lg w-full" type="text" name="newNama">
+        </div>
+        <button class="w-24 flex items-center justify-center py-2 bg-yellow-400 hover:bg-yellow-500 text-white rounded-lg" name="submit" type="submit">
+            <div>
+                <img class="h-5" src="<?= base_url('assets/img/edit.svg'); ?>" alt="Edit Data">
+            </div>
+            <span class="ml-2 text-xs">
+                Edit
+            </span>
+        </button>
+    </form>
+</div>
+<!-- End Modals Edit-->
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>
-<script>
-    const modal = document.getElementById("modal");
-    const openModal = document.getElementById("openModal");
-    const closeModal = document.getElementById("closeModal");
-
-    openModal.addEventListener("click", function() {
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-    })
-
-    closeModal.addEventListener("click", function() {
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-    })
-</script>
+<script src="<?= base_url('assets/js/script.js'); ?>"></script>
 <?= $this->endSection(); ?>
